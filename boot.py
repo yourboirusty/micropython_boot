@@ -18,7 +18,11 @@ with open('conf/network.conf', 'r') as config_file:
 
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
-hostname = "Shutter_" + hex(random.getrandbits(16))[2:]
+try:
+    board_id = esp.flash_id()
+except:
+    board_id = hex(random.getrandbits(16))[2:]
+hostname = "Shutter_" + str(board_id)
 wlan.config(dhcp_hostname = "test")
 wlan.connect(*config['WLAN'])
 
