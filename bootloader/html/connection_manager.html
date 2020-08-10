@@ -1,0 +1,67 @@
+<html>
+
+<head>
+    <title>ESP Connection Manager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:,">
+    <style>
+        html {
+            font-family: Helvetica;
+            display: inline-block;
+            margin: 0px auto;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #0F3376;
+            padding: 2vh;
+        }
+        
+        p {
+            font-size: 1.5rem;
+        }
+        
+        .button {
+            display: inline-block;
+            background-color: #e7bd3b;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            padding: 16px 40px;
+            text-decoration: none;
+            font-size: 30px;
+            margin: 2px;
+            cursor: pointer;
+        }
+        
+        .text_field {
+            display: inline-block;
+            background-color: #4286f4;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            text-decoration: none;
+            font-size: 30px;
+            margin: 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>ESP Connection Manager</h1>
+    <p>Connection state: {{wifi_status}}</p>
+    <form action="/connect" method="POST" enctype="multipart/form-data">
+        <p>
+            <label for='ssid'>SSID:</label>
+            <input class='text_field' id='ssid' name='ssid' value="{{ssid}}" type="text">
+        </p>
+        <p>
+            <label for='password'>PASSWORD:</label>
+            <input class='text_field' id='password' name='password' value="{{password}}" type="password">
+        </p>
+        <p><input type='submit' class='button' value='Connect'> <input type="reset" class="button" value="Clear"></p>
+    </form>
+</body>
+
+</html>
